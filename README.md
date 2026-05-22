@@ -23,24 +23,7 @@ The **real-time path** runs continuously: a Python producer puts AQI readings on
 
 The **batch path** runs in parallel: Kinesis Firehose buffers the same raw records and delivers them to S3 every 60 seconds, partitioned by date. A Glue crawler runs every 15 minutes, keeping the Athena catalog current so analysts can query the full historical dataset without touching the live stream.
 
-```
-Boto3 Producer
-     │
-     ▼
-AQI Stream (Kinesis)
-     │
-     ├─────────────────────► Firehose ──► S3 raw/
-     │                                        │
-     ▼                                        ▼
-AQI Analysis (Flink)               Glue Crawler ──► Athena
-     │
-     ▼
-Stats Stream (Kinesis)
-     │
-     ├─────────────────────► Lambda ──► CloudWatch ──► Grafana
-     │
-     └─────────────────────► SNS ──► Email alerts
-```
+![Angaza platform architecture](./architecture.png)
 
 ---
 
