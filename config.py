@@ -15,7 +15,7 @@ AWS_ACCOUNT_ID: str = os.getenv("AWS_ACCOUNT_ID", "")  # required at deploy time
 # ── S3 ───────────────────────────────────────────────────────────────────────
 S3_BUCKET: str = os.getenv(
     "AQI_S3_BUCKET",
-    f"aqi-data-lake-{AWS_ACCOUNT_ID}" if AWS_ACCOUNT_ID else "aqi-data-lake-local",
+    f"angaza-data-lake-{AWS_ACCOUNT_ID}" if AWS_ACCOUNT_ID else "angaza-data-lake-local",
 )
 S3_PREFIX_RAW:        str = "raw/"
 S3_PREFIX_ANALYTICAL: str = "analytical/"
